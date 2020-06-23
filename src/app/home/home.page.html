@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-label class="scorehint" position="floating" (click)="doScore('1',1)">得分: </ion-label>
+    <ion-label class="score" position="floating">{{curScore}}</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<div class="maincontent" >
+  <ion-content>
+    <div>
+      <pinch-zoom  #zoom double-tap="false" disableZoomControl="disable"
+                   overflow="hidden" autoHeight="true"
+                   draggableImage="false"  limitPan="false" backgroundColor="white" minScale="1">
+
+        <ion-img  (ionImgDidLoad)="onImgDidLoad()"  class="pic" alt="star" src="../../assets/test.png"> </ion-img>
+      </pinch-zoom>
+    </div>
+
+  </ion-content>
+
+</div>
+
+<ion-footer [ngStyle]="{'height': tinyKey.length <= 6 ? '8%' : '16%'}" >
+  <div  class="tinykey" >
+    <div *ngFor="let s of tinyKey ; let i = index;" class="tinykeydiv"
+         (click)="doScore(s, i)"
+         [ngStyle]="{'width': tinyKey.length <= 6 ? 'calc(100% /' + tinyKey.length + ')' : 'calc(100% /' + tinyKey.length / 2 + ')',
+                 'height': tinyKey.length <= 6 ? '100%' : '50%'}"
+         [ngClass]="{'highlight': selectedIndex === i}">
+      <ion-label  position="undefined" color="light" style="vertical-align: middle"> {{s}} </ion-label>
+    </div>
+
+  </div>
+</ion-footer>
+
