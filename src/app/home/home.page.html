@@ -8,23 +8,17 @@
   </ion-toolbar>
 </ion-header>
 
-<div class="maincontent" >
   <ion-content>
     <div>
-      <pinch-zoom  #zoom double-tap="false" disableZoomControl="disable"
-                   overflow="hidden" autoHeight="true"
-                   draggableImage="false"  limitPan="false" backgroundColor="white" minScale="1">
-
+      <pinch-zoom  #zoom >
         <ion-img  (ionImgDidLoad)="onImgDidLoad()"  class="pic" alt="star" src="../../assets/test.png"> </ion-img>
       </pinch-zoom>
     </div>
-
   </ion-content>
 
-</div>
+<ion-footer  [ngStyle]="{'height': tinyKey.length <= 6 ? '8%' : '16%'}">
 
-<ion-footer [ngStyle]="{'height': tinyKey.length <= 6 ? '8%' : '16%'}" >
-  <div  class="tinykey" >
+  <div  class="tinykey">
     <div *ngFor="let s of tinyKey ; let i = index;" class="tinykeydiv"
          (click)="doScore(s, i)"
          [ngStyle]="{'width': tinyKey.length <= 6 ? 'calc(100% /' + tinyKey.length + ')' : 'calc(100% /' + tinyKey.length / 2 + ')',

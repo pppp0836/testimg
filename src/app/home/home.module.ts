@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import {PinchZoomModule} from '../ivypinch_pro_ng8/pinch-zoom.module';
+import {PinchZoomModule} from 'ngx-pinch-zoom';
 
 
 @NgModule({
